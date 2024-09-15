@@ -1,0 +1,56 @@
+version: '3.8'
+
+services:
+  api_grpc_server:
+    build: .
+    container_name: api_grpc_server
+    ports:
+      - "5000:5000"  # API REST
+      - "50051:50051"  # gRPC server
+    depends_on:
+      - redis1
+      - redis2
+      - redis3
+
+  redis1:
+    image: bitnami/redis:latest
+    container_name: redis-server-1
+    environment:
+      - ALLOW_EMPTY_PASSWORD=yes
+    ports:
+      - "6380:6379"
+
+  redis2:
+    image: bitnami/redis:latest
+    container_name: redis-server-2
+    environment:
+      - ALLOW_EMPTY_PASSWORD=yes
+    ports:
+      - "6381:6379"
+
+  redis3:
+    image: bitnami/redis:latest
+    container_name: redis-server-3
+    environment:
+      - ALLOW_EMPTY_PASSWORD=yes
+    ports:
+      - "6382:6379"
+
+  redisinsight:
+    image: redislabs/redisinsight:latest
+    container_name: redis-insight
+    ports:
+      - "5540:5540"
+    depends_on:
+      - redis1
+      - redis2
+      - redis3
+
+
+
+
+
+
+
+
+  
