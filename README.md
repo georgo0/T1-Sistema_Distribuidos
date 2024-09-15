@@ -1,6 +1,11 @@
 # Tarea 1 - Sistema Distribuidos
 En este repositorio se encuentran todos los códigos implementados para  levantar el sistema
 
+Integrantes:
+* Cristobal Barra
+* Jorge Gallegos
+  
+
 ## Stack de tecnologías usado
 
 [![Docker](https://img.shields.io/badge/Docker-2496ED?logo=docker&logoColor=white&style=flat)](https://www.docker.com/)
