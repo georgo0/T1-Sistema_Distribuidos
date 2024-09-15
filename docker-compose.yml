@@ -11,6 +11,7 @@ services:
       - redis1
       - redis2
       - redis3
+    command: ["python", "grpc_server.py", "app.py", "uvicorn app:app --reload"] 
 
   redis1:
     image: bitnami/redis:latest

@@ -9,6 +9,9 @@ from concurrent.futures import ThreadPoolExecutor
 
 app = FastAPI()
 
+# Comando para cuando la API no funciona
+  # uvicorn app:app --reload 
+
 # Configurar clientes Redis (varios para particiones)
 redis_clients = [
     redis.Redis(host='127.0.0.1', port=6380, decode_responses=True),
@@ -59,18 +62,18 @@ def resolve_domain(domain: str):
     ip_address = get_from_cache(domain)
 
     if ip_address:
+        # Si está en caché, devolver la IP desde Redis
         return {"domain": domain, "ip_address": ip_address, "cache_hit": True}
 
-    # Si no está en la caché, obtener la IP a través del servidor gRPC o dig()
-    try:
-        ip_address = get_ip_from_grpc(domain)
-    except Exception:
-        ip_address = get_ip_using_dig(domain)
+    # Si no está en la caché, usar dig para resolver el dominio
+    ip_address = get_ip_using_dig(domain)
 
     if ip_address:
-        # Guardar en caché la IP resuelta
+        # Guardar en caché la IP resuelta por dig
         save_to_cache(domain, ip_address)
         return {"domain": domain, "ip_address": ip_address, "cache_hit": False}
     else:
+        # Si dig no puede resolverlo, devolver error
         return {"error": "Unable to resolve domain"}, 404
+
 

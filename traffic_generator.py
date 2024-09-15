@@ -6,7 +6,7 @@ import requests
 db_file = 'domains.db'  # Base de datos con 50 mil filas
 
 # Número de consultas aleatorias
-num_queries = 75000
+num_queries = 10
 
 # Leer dataset desde la base de datos
 with sqlite3.connect(db_file) as conn:

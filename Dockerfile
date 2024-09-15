@@ -16,7 +16,7 @@ EXPOSE 5000
 EXPOSE 50051
 
 # Comando para ejecutar ambos servicios
-CMD ["sh", "-c", "python3 grpc_server.py & python3 app.py & traffic_generator.py"]
+CMD ["sh", "-c", "python3 grpc_server.py & python3 app.py", "uvicorn app:app --reload"]
 
 
 
