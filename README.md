@@ -24,7 +24,9 @@ Desde la carpeta T1_Sistema_Distribuidos, levantar los contenedores y arrancar l
 
 => $ uvicorn app:app --reload
 
-Ejemplo de uso:
+Ejemplos de uso:
 
 => $ python traffic_generator.py
+
+=> $ python test_requests.py
 
