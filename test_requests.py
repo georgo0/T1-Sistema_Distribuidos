@@ -23,23 +23,20 @@ with sqlite3.connect(db_file) as conn:
 if len(domains) == 0:
     raise ValueError(f"El archivo {db_file} está vacío. No hay dominios para consultar.")
 
-# Seleccionar aleatoriamente 100,000 dominios con repetición
+# Seleccionar aleatoriamente 10,000 dominios con repetición
 sampled_domains = random.choices(domains, k=num_queries)
 
 # Contar las frecuencias de cada dominio consultado
 domain_frequencies = Counter(sampled_domains)
 
-# Ordenar los dominios por frecuencia en orden descendente
-sorted_domain_frequencies = domain_frequencies.most_common()
+# Obtener la frecuencia de cada dominio
+frequencies = list(domain_frequencies.values())
 
-# Separar dominios y frecuencias
-frequencies_sorted = [freq for _, freq in sorted_domain_frequencies]
-
-# Graficar la cantidad de consultas de cada dominio como una curva
+# Graficar la distribución de frecuencias
 plt.figure(figsize=(10, 6))
-plt.plot(frequencies_sorted, color='blue', marker='o')  # Graficar curva
-plt.xlabel('Dominios consultados')
-plt.ylabel('Frecuencia')
-plt.title('Cantidad de consultas por dominio')
+plt.hist(frequencies, bins=30, color='blue', edgecolor='black')
+plt.xlabel('Cantidad de consultas por dominio')
+plt.ylabel('Frecuencia de consultas')
+plt.title('Distribución de frecuencias de consultas a dominios')
 plt.grid(True)
 plt.show()

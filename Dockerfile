@@ -12,7 +12,7 @@ RUN pip install --no-cache-dir -r requirements.txt
 COPY . /app/
 
 # Expone los puertos necesarios para la API REST y gRPC
-EXPOSE 5000
+EXPOSE 8000
 EXPOSE 50051
 
 # Comando para ejecutar ambos servicios

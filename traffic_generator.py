@@ -3,7 +3,7 @@ import random
 import requests
 
 # Archivo de base de datos
-db_file = 'domains.db'  # Base de datos con 50 mil filas
+db_file = '3rd_lev_domains.db'  # Base de datos con 50 mil filas
 
 # Número de consultas aleatorias
 num_queries = 10
@@ -11,7 +11,7 @@ num_queries = 10
 # Leer dataset desde la base de datos
 with sqlite3.connect(db_file) as conn:
     cursor = conn.cursor()
-    cursor.execute('''SELECT domain FROM domain''')
+    cursor.execute('''SELECT domain FROM valid_domains''')
     domains = [row[0] for row in cursor.fetchall()]
 
 # Verifica que hay suficientes dominios
@@ -27,12 +27,10 @@ api_url = "http://localhost:8000/resolve"  # Ajusta el puerto si es necesario
 # Enviar consultas a la API REST
 for domain in sampled_domains:
     try:
-        requests.get(api_url, params={'domain': domain})
+        response = requests.get(api_url, params={'domain': domain})
+        print(f'Consultando dominio: {domain}  =>  {response.json()}')
     except requests.exceptions.RequestException:
         pass
-
-# Imprimir mensaje final
-print(f"Se han generado {num_queries} consultas.")
 
 
 

@@ -15,8 +15,7 @@ app = FastAPI()
 # Configurar clientes Redis (varios para particiones)
 redis_clients = [
     redis.Redis(host='127.0.0.1', port=6380, decode_responses=True),
-    redis.Redis(host='127.0.0.1', port=6381, decode_responses=True),
-    redis.Redis(host='127.0.0.1', port=6382, decode_responses=True)
+    redis.Redis(host='127.0.0.1', port=6381, decode_responses=True)
 ]
 
 # Obtener el cliente Redis correspondiente basado en el hash de la clave

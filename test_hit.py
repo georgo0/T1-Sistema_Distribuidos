@@ -4,18 +4,18 @@ import requests
 import matplotlib.pyplot as plt
 
 # Archivo de base de datos
-db_file = 'domains.db'  # Base de datos con 50 mil filas
+db_file = '3rd_lev_domains.db'  # Base de datos con 50 mil filas
 
 # URL de la API REST
 api_url = "http://localhost:8000/resolve"
 
 # Número de consultas aleatorias
-num_queries = 10000
+num_queries = 25000
 
 # Leer dataset desde la base de datos
 with sqlite3.connect(db_file) as conn:
     cursor = conn.cursor()
-    cursor.execute('''SELECT domain FROM domain''')
+    cursor.execute('''SELECT domain FROM valid_domains''')
     domains = [row[0] for row in cursor.fetchall()]
 
 # Verifica que hay suficientes dominios

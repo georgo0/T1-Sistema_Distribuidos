@@ -5,12 +5,11 @@ services:
     build: .
     container_name: api_grpc_server
     ports:
-      - "5000:5000"  # API REST
-      - "50051:50051"  # gRPC server
+      - "8000:8000" 
+      - "50051:50051" 
     depends_on:
       - redis1
       - redis2
-      - redis3
     command: ["python", "grpc_server.py", "app.py", "uvicorn app:app --reload"] 
 
   redis1:
@@ -18,6 +17,8 @@ services:
     container_name: redis-server-1
     environment:
       - ALLOW_EMPTY_PASSWORD=yes
+      - REDIS_MAXMEMORY=512kb
+      - REDIS_MAXMEMORY_POLICY=allkeys-lru
     ports:
       - "6380:6379"
 
@@ -26,16 +27,10 @@ services:
     container_name: redis-server-2
     environment:
       - ALLOW_EMPTY_PASSWORD=yes
+      - REDIS_MAXMEMORY=512kb
+      - REDIS_MAXMEMORY_POLICY=allkeys-fifo
     ports:
       - "6381:6379"
-
-  redis3:
-    image: bitnami/redis:latest
-    container_name: redis-server-3
-    environment:
-      - ALLOW_EMPTY_PASSWORD=yes
-    ports:
-      - "6382:6379"
 
   redisinsight:
     image: redislabs/redisinsight:latest
@@ -45,7 +40,8 @@ services:
     depends_on:
       - redis1
       - redis2
-      - redis3
+
+
 
 
 
