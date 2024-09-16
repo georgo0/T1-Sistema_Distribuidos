@@ -16,7 +16,8 @@ Integrantes:
 
 En la terminal utilizar los siguientes comandos:
 
-=> $ git clone https://github.com/georgo0/T1-Sistema_Distribuidos
+```bash
+$ git clone https://github.com/georgo0/T1-Sistema_Distribuidos
 
 Desde la carpeta T1_Sistema_Distribuidos, levantar los contenedores y arrancar la API
 
