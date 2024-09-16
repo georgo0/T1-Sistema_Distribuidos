@@ -4,7 +4,10 @@ En este repositorio se encuentran todos los códigos implementados para  levanta
 Integrantes:
 * Cristobal Barra
 * Jorge Gallegos
-  
+
+Enlace Video demostración (accesible solo con cuenta UDP):
+
+https://drive.google.com/file/d/1yjliK5yO1CJ6WZzUw1ashxvuQxaqW4_X/view?usp=sharing
 
 ## Stack de tecnologías usado
 
