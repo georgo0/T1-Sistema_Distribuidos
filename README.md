@@ -22,10 +22,14 @@ En la terminal utilizar los siguientes comandos:
 Desde la carpeta T1_Sistema_Distribuidos, levantar los contenedores y arrancar la API
 ```bash
 docker compose up -d
+```
+```bash
 uvicorn app:app --reload
 ```
 Ejemplos de uso:
 ```bash
  python traffic_generator.py
+```
+```bash
  python test_requests.py
 ```
