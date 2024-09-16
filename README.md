@@ -17,17 +17,15 @@ Integrantes:
 En la terminal utilizar los siguientes comandos:
 
 ```bash
-$ git clone https://github.com/georgo0/T1-Sistema_Distribuidos
-
+ git clone https://github.com/georgo0/T1-Sistema_Distribuidos
+```
 Desde la carpeta T1_Sistema_Distribuidos, levantar los contenedores y arrancar la API
-
-=> $ docker compose up -d
-
-=> $ uvicorn app:app --reload
-
+```bash
+docker compose up -d
+uvicorn app:app --reload
+```
 Ejemplos de uso:
-
-=> $ python traffic_generator.py
-
-=> $ python test_requests.py
-
+```bash
+ python traffic_generator.py
+ python test_requests.py
+```
